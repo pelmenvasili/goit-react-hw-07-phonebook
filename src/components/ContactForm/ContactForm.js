@@ -2,13 +2,13 @@ import { useState } from 'react';
 import css from './ContactForm.module.css';
 import { useDispatch, useSelector } from 'react-redux';
 import { postContact } from 'redux/operations';
-import { items } from 'redux/selectors';
+import { selectItems } from 'redux/selectors';
 
 const ContactForm = () => {
   const dispatch = useDispatch();
   const [name, setName] = useState('');
   const [number, setNumber] = useState('');
-  const contacts = useSelector(items);
+  const contacts = useSelector(selectItems);
 
   const handleNameChange = event => {
     setName(event.target.value);

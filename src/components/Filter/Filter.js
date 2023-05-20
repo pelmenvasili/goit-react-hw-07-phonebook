@@ -1,12 +1,11 @@
 import css from '../ContactForm/ContactForm.module.css';
 import { useDispatch, useSelector } from 'react-redux';
 import { updateFilter } from '../../redux/contactsSlice';
-import { getFilter } from 'redux/selectors';
+import { selectFilter } from 'redux/selectors';
 
 const Filter = () => {
   const dispatch = useDispatch();
-  const filter = useSelector(getFilter);
-
+  const filter = useSelector(selectFilter);
   const handleFilterChange = event => {
     dispatch(updateFilter(event.target.value));
   };

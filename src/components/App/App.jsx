@@ -6,13 +6,13 @@ import Filter from 'components/Filter/Filter';
 import css from './App.module.css';
 import { getContacts } from 'redux/operations';
 import Loader from 'components/Loader/Loader';
-import { error, isLoading, items } from 'redux/selectors';
+import { selectError, selectIsLoading, selectItems } from 'redux/selectors';
 
 const App = () => {
   const dispatch = useDispatch();
-  const isError = useSelector(error);
-  const loading = useSelector(isLoading);
-  const contacts = useSelector(items) || [];
+  const isError = useSelector(selectError);
+  const loading = useSelector(selectIsLoading);
+  const contacts = useSelector(selectItems) || [];
 
   useEffect(() => {
     dispatch(getContacts());
