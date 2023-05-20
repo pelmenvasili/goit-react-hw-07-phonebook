@@ -4,7 +4,7 @@ import ContactForm from 'components/ContactForm/ContactForm';
 import ContactList from 'components/ContactList/ContactList';
 import Filter from 'components/Filter/Filter';
 import css from './App.module.css';
-import { getContacts } from 'redux/operations';
+import { fetchContacts } from 'redux/operations';
 import Loader from 'components/Loader/Loader';
 import { selectError, selectIsLoading, selectItems } from 'redux/selectors';
 
@@ -15,7 +15,7 @@ const App = () => {
   const contacts = useSelector(selectItems) || [];
 
   useEffect(() => {
-    dispatch(getContacts());
+    dispatch(fetchContacts());
   }, [dispatch]);
 
   return (

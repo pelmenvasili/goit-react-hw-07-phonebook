@@ -1,7 +1,7 @@
 import { useState } from 'react';
 import css from './ContactForm.module.css';
 import { useDispatch, useSelector } from 'react-redux';
-import { postContact } from 'redux/operations';
+import { addContact } from 'redux/operations';
 import { selectItems } from 'redux/selectors';
 
 const ContactForm = () => {
@@ -20,16 +20,22 @@ const ContactForm = () => {
 
   const handleFormSubmit = event => {
     event.preventDefault();
+
+    const resetValue = () => {
+      setName('');
+      setNumber('');
+    };
+
     const existingContact = contacts.find(
       contact => contact.name === name || contact.number === number
     );
     if (existingContact) {
       alert('Contact with the same name or number already exists.');
+      resetValue();
       return;
     }
-    dispatch(postContact({ name, number }));
-    setName('');
-    setNumber('');
+    dispatch(addContact({ name, number }));
+    resetValue();
   };
 
   return (
